@@ -1,0 +1,11 @@
+{% for generated_image in generated_images %}
+<div>
+  <p>Text: {{ generated_image.get_text }}</p>
+  <p>Datetime: {{ generated_image.get_datetime }}</p>
+  {% if generated_image.get_image_url %}
+  <img src="{{ generated_image.get_image_url }}" alt="Generated Image" />
+  {% else %}
+  <p>No image available</p>
+  {% endif %}
+</div>
+{% endfor %}

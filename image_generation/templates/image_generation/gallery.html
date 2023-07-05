@@ -1,0 +1,5 @@
+{% for image in generated_images %}
+<img src="{{ image.image.url }}" alt="Generated Image" />
+{% empty %}
+<p>No generated images available.</p>
+{% endfor %}
