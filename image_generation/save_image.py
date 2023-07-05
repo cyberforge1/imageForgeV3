@@ -5,11 +5,11 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-MEDIA_ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "media")
+MEDIA_ROOT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "media")
 
 def save_image_from_url(url, prompt):
     response = requests.get(url)
-    image_path = f"image{prompt}.jpg"
+    image_path = os.path.join(MEDIA_ROOT, f"image{prompt}.jpg")
     
     with open(image_path, "wb") as f:
         f.write(response.content)
@@ -20,3 +20,6 @@ def save_image_from_url(url, prompt):
 image_url = generate_image_url()
 if image_url:
     save_image_from_url(image_url, PROMPT)
+
+
+
